@@ -26,7 +26,7 @@ public class UserDAO {
 	 * @return
 	 */
 	public User getUserById(String id) {
-		return (User) this.getSession().createQuery("from User where id=?").setParameter(0, id).uniqueResult();
+		return (User) this.getSession().createQuery("from User where id=?").setParameter(0, Integer.parseInt(id)).uniqueResult();
 	}
 
 	/**
@@ -34,13 +34,6 @@ public class UserDAO {
 	 * @param user
 	 */
 	public void addUser(User user) {
-//		List<User> users=this.getSession().createCriteria(User.class).list();
-//		System.out.println("addUser"+users.size());
-//		if (users!=null&&users.size()>0) {
-//			user.setId( (Integer.parseInt(users.get( users.size()-1 ).getId())+1)+"");
-//		}else {
-//			user.setId("5");
-//		}
 		this.getSession().save(user);
 	}
 
@@ -57,7 +50,7 @@ public class UserDAO {
 	 * @param id
 	 */
 	public void deleteUserById(String id) {
-		this.getSession().createQuery("delete User where id=?").setParameter(0, id).executeUpdate();
+		this.getSession().createQuery("delete User where id=?").setParameter(0, Integer.parseInt(id)).executeUpdate();
 	}
 
 	/**
